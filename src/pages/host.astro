@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.json';
+import { url } from '../lib/url';
+---
+<BaseLayout
+  title="Host IMX"
+  description="How to propose hosting a future edition of ACM IMX: what makes a strong bid, evaluation criteria and the bidding guidelines."
+>
+  <div class="container page prose">
+    <h1>Host IMX</h1>
+    <p class="lead">
+      The Steering Committee welcomes proposals to host future editions of IMX. Applications are accepted on
+      an ongoing basis.
+    </p>
+    <p>
+      Send proposals to the Steering Committee at <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
+    </p>
+
+    <h2>Growth and diversity</h2>
+    <p>
+      IMX is committed to growth and diversity. We encourage bid organisers to say how they will inject fresh
+      thinking, diverse participation and new ideas into the IMX community. This can be done in many ways,
+      for example:
+    </p>
+    <ul>
+      <li>collaborating with colleagues in regions that are under-represented at IMX</li>
+      <li>focusing on topics of particular interest to those communities</li>
+      <li>curating tracks or workshops</li>
+      <li>hosting the conference in a new region, with options for remote participation</li>
+    </ul>
+    <p>We are sure there are other ideas we have not considered, and we look forward to hearing from you.</p>
+    <p>IMX has been held across Europe, North America, Asia and South America.</p>
+
+    <h2>Timing</h2>
+    <p>The conference is typically held in June.</p>
+
+    <h2>What makes a strong bid</h2>
+    <p>Particularly strong proposals include:</p>
+    <ul>
+      <li>plans to engage local universities and the technology or media industry in the host region</li>
+      <li>plans to help IMX broaden diverse thinking in its community</li>
+    </ul>
+
+    <h2>Evaluation criteria</h2>
+    <p>Bids are evaluated on:</p>
+    <ul>
+      <li>location</li>
+      <li>venue</li>
+      <li>dates</li>
+      <li>a good start on the organising committee, including affiliations</li>
+      <li>diversity</li>
+      <li>budget</li>
+    </ul>
+    <p>
+      Please include plans for remote or hybrid participation, and for managing any disruption that could
+      affect registration or attendance.
+    </p>
+
+    <h2>Bidding guidelines</h2>
+    <p>
+      To help us compare venues objectively, please prepare your proposal following the
+      <a href={url('files/imx-bidding-guidelines.pdf')}>IMX bidding guidelines (PDF)</a>.
+    </p>
+
+    <h2>How decisions are made</h2>
+    <p>
+      Decisions about future hosts are made by the IMX Steering Committee. Please get in touch early to discuss
+      your ideas or ask questions.
+    </p>
+  </div>
+</BaseLayout>

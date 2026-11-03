@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.json';
+---
+<BaseLayout
+  title="Student Assistant"
+  description="PhD students and early-career researchers can support the ACM IMX Steering Committee as Student Assistant."
+>
+  <div class="container page prose">
+    <h1>Student Assistant to the Steering Committee</h1>
+    <p class="lead">
+      The Steering Committee (SC) of the ACM International Conference on Interactive Media Experiences (IMX)
+      welcomes expressions of interest from PhD students and early-career researchers who would like to join
+      us as Student Assistant to the Steering Committee.
+    </p>
+    <p>
+      The role is a chance to get involved in running an international ACM conference, see how an academic
+      community is built and grow your professional network, while making a real contribution to a welcoming
+      and growing research community.
+    </p>
+
+    <h2>About IMX</h2>
+    <p>
+      ACM IMX is the leading international conference for research into interactive media experiences. It
+      brings together an interdisciplinary community spanning human-computer interaction, multimedia
+      engineering, media design, media studies and media psychology. IMX is sponsored by ACM SIGCHI, in
+      cooperation with SIGMM and SIGWEB.
+    </p>
+
+    <h2>The role</h2>
+    <p>
+      The Student Assistant supports the Steering Committee with administrative and communications tasks.
+      These are usually light but important activities that keep the community running smoothly, for example:
+    </p>
+    <ul>
+      <li>maintaining and updating the IMX Steering Committee website</li>
+      <li>helping to archive and organise conference materials and documentation</li>
+      <li>assisting with communications, such as social media and community announcements</li>
+      <li>supporting the preparation of meeting agendas and minutes</li>
+      <li>helping to coordinate calls for hosts, open calls and other Steering Committee activities</li>
+    </ul>
+    <p>
+      The time commitment is modest: typically a few hours per month, with occasional busier periods around
+      the conference itself.
+    </p>
+
+    <h3>What you gain</h3>
+    <ul>
+      <li>A behind-the-scenes view of how an international ACM conference is organised and governed</li>
+      <li>Direct contact with senior researchers and practitioners in the interactive media community</li>
+      <li>Experience in academic service and conference administration, valuable for your CV and career development</li>
+      <li>The chance to get involved in organising IMX and to take part in Steering Committee meetings</li>
+      <li>A named role that recognises your contribution to the community</li>
+    </ul>
+
+    <h2>Who should apply</h2>
+    <p>
+      We welcome applications from current PhD students and early-career researchers (for example recent
+      graduates or postdocs) who:
+    </p>
+    <ul>
+      <li>have an interest in interactive media experiences or a related research area</li>
+      <li>are comfortable with basic web editing and digital communication tools</li>
+      <li>are reliable, organised and happy to work independently on small tasks</li>
+      <li>want to become more involved in the IMX community</li>
+    </ul>
+    <p>Previous attendance at IMX is welcome but not required. We are keen to hear from people who are new to the community.</p>
+
+    <h2>What to include</h2>
+    <p>
+      Please send a short expression of interest (no more than half a page) to
+      <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>, including:
+    </p>
+    <ol>
+      <li>your name, affiliation, and stage of study or career</li>
+      <li>a brief note on why you are interested in the role and what you would bring to it</li>
+      <li>any relevant experience (for example web skills, social media or event support); do not worry if this is limited</li>
+    </ol>
+
+    <h2>Timeline</h2>
+    <p>Applications are accepted at any time.</p>
+
+    <h2>Questions</h2>
+    <p>
+      For informal enquiries about the role, please contact the SC President via
+      <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>. We are happy to chat.
+    </p>
+
+    <p><em>
+      IMX is committed to building an inclusive and welcoming community. We encourage applications from
+      individuals of all backgrounds.
+    </em></p>
+  </div>
+</BaseLayout>

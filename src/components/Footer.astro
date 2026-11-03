@@ -1,0 +1,55 @@
+---
+import site from '../data/site.json';
+import { url } from '../lib/url';
+
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="footer__bar" aria-hidden="true"></div>
+  <div class="container footer__inner">
+    <nav aria-label="Footer">
+      <ul class="footer__links">
+        <li><a href={url('archive/')}>Archive: Special Issues</a></li>
+        <li><a href={site.acmDlUrl}>ACM Digital Library: IMX proceedings and awards</a></li>
+        <li class="footer__sigchi"><a href={site.sigchiUrl}>SIGCHI conferences</a></li>
+        <li><a href={url('accessibility/')}>Accessibility</a></li>
+        <li><a href={url('privacy/')}>Privacy</a></li>
+      </ul>
+    </nav>
+    <p class="footer__copy">
+      © {year} ACM IMX Steering Committee. IMX is sponsored by ACM SIGCHI, in cooperation with ACM SIGMM and ACM SIGWEB.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    margin-top: var(--space-6);
+    background: var(--color-bg-subtle);
+    font-size: 1rem;
+  }
+  .footer__bar {
+    height: 6px;
+    background: var(--gradient-brand);
+  }
+  .footer__inner {
+    padding-block: var(--space-5);
+  }
+  .footer__links {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-4);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
+  }
+  .footer__links li + li { margin-top: 0; }
+  .footer__copy {
+    margin: 0;
+    color: var(--color-text-muted);
+  }
+  /* The SIGCHI link is in the top bar on wider screens */
+  @media (min-width: 40.01em) {
+    .footer__sigchi { display: none; }
+  }
+</style>

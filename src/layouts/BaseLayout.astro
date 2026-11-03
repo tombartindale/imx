@@ -1,0 +1,126 @@
+---
+import '../styles/global.css';
+import TopBar from '../components/TopBar.astro';
+import MainNav from '../components/MainNav.astro';
+import Footer from '../components/Footer.astro';
+import site from '../data/site.json';
+import { url } from '../lib/url';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Set on the home page so the <title> is just the site name. */
+  isHome?: boolean;
+  /** Keep this page out of search engines (used by the 404 page). */
+  noindex?: boolean;
+}
+
+const { title, description, isHome = false, noindex = false } = Astro.props;
+const pageTitle = isHome ? site.siteName : `${title} | ${site.siteName}`;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(url('images/og-image.jpg'), Astro.site).href;
+const isStaging = import.meta.env.PUBLIC_ENV === 'staging';
+---
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    {!noindex && <link rel="canonical" href={canonical} />}
+    {isStaging ? <meta name="robots" content="noindex, nofollow" /> : noindex && <meta name="robots" content="noindex" />}
+
+    <link rel="icon" href={url('favicon.svg')} type="image/svg+xml" />
+    <link rel="icon" href={url('favicon-32.png')} type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href={url('apple-touch-icon.png')} />
+    <link rel="sitemap" href={url('sitemap-index.xml')} />
+    <meta name="theme-color" content="#28000C" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.siteName} />
+    <meta property="og:title" content={isHome ? site.siteName : title} />
+    <meta property="og:description" content={description} />
+    {!noindex && <meta property="og:url" content={canonical} />}
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="ACM IMX logo" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <TopBar />
+    <header class="header">
+      <div class="container header__inner">
+        <a class="header__brand" href={url()}>
+          <img src={url('images/imx-logo.svg')} alt="ACM IMX" width="160" height="83" />
+          <span class="header__title">Steering Committee</span>
+        </a>
+        <MainNav />
+      </div>
+      <div class="header__bar" aria-hidden="true"></div>
+    </header>
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .header {
+    background: var(--color-bg);
+  }
+  .header__inner {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-block: var(--space-3);
+  }
+  .header__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    text-decoration: none;
+    color: var(--color-heading);
+  }
+  .header__brand img {
+    width: 8rem;
+    height: auto;
+    display: block;
+  }
+  .header__title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.15rem;
+    line-height: 1.2;
+    padding-left: var(--space-3);
+    border-left: 2px solid var(--color-border);
+  }
+  .header__bar {
+    height: 4px;
+    background: var(--gradient-brand);
+  }
+  main:focus { outline: none; }
+  /* Mobile: leave room for the absolutely positioned Menu button */
+  @media (max-width: 47.99em) {
+    .header__inner { row-gap: 0; }
+    .header__brand {
+      max-width: calc(100% - 6.5rem);
+      gap: var(--space-2);
+    }
+    .header__brand img { width: 6.5rem; }
+    .header__title {
+      font-size: 1rem;
+      padding-left: var(--space-2);
+    }
+  }
+  @media (min-width: 48em) {
+    .header__brand img { width: 10rem; }
+    .header__title { font-size: 1.3rem; }
+  }
+</style>

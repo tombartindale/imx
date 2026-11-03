@@ -1,0 +1,164 @@
+---
+import { url } from '../lib/url';
+
+interface NavItem { label: string; href: string; children?: NavItem[] }
+
+const items: NavItem[] = [
+  { label: 'Home', href: url() },
+  { label: 'About IMX', href: url('about/') },
+  { label: 'Host IMX', href: url('host/') },
+  {
+    label: 'Steering Committee',
+    href: url('committee/'),
+    children: [
+      { label: 'Join the SC', href: url('join/') },
+      { label: 'Student Assistant', href: url('student-assistant/') },
+      { label: 'Honorary Committee', href: url('honorary/') },
+    ],
+  },
+];
+
+const current = Astro.url.pathname.replace(/\/?$/, '/');
+const isCurrent = (href: string) => current === href;
+const inSection = (item: NavItem) =>
+  isCurrent(item.href) || (item.children ?? []).some((c) => isCurrent(c.href));
+---
+<nav class="mainnav" aria-label="Main">
+  <button class="mainnav__toggle" type="button" aria-expanded="false" aria-controls="mainnav-list" hidden>
+    Menu
+  </button>
+  <ul class="mainnav__list" id="mainnav-list">
+    {items.map((item) => (
+      <li class:list={['mainnav__item', { 'has-children': item.children, 'in-section': inSection(item) }]}>
+        <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
+        {item.children && (
+          <ul class="mainnav__sub">
+            {item.children.map((child) => (
+              <li>
+                <a href={child.href} aria-current={isCurrent(child.href) ? 'page' : undefined}>{child.label}</a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<script is:inline>
+  // Progressive enhancement: without JS the full menu is always visible.
+  (function () {
+    var nav = document.currentScript.previousElementSibling;
+    var btn = nav.querySelector('.mainnav__toggle');
+    nav.classList.add('js');
+    btn.hidden = false;
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+    });
+  })();
+</script>
+
+<style>
+  .mainnav {
+    font-weight: 600;
+  }
+  .mainnav__list,
+  .mainnav__sub {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .mainnav li + li { margin-top: 0; }
+  .mainnav a {
+    display: block;
+    padding: var(--space-2) var(--space-3);
+    color: var(--color-heading);
+    text-decoration: none;
+    border-radius: var(--radius);
+  }
+  .mainnav a:hover {
+    color: var(--color-link);
+    text-decoration: underline;
+  }
+  .mainnav a[aria-current='page'] {
+    color: var(--color-link);
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: var(--color-pink);
+  }
+
+  .mainnav__toggle {
+    font: inherit;
+    font-weight: 700;
+    color: var(--color-heading);
+    background: var(--color-bg);
+    border: 2px solid var(--color-heading);
+    border-radius: var(--radius);
+    padding: var(--space-1) var(--space-3);
+    cursor: pointer;
+  }
+
+  /* Mobile: stacked list, collapsible when JS is available */
+  @media (max-width: 47.99em) {
+    .mainnav {
+      flex-basis: 100%;
+    }
+    .mainnav.js .mainnav__toggle {
+      position: absolute;
+      top: calc(var(--space-3) + 0.6rem);
+      right: var(--space-3);
+    }
+    .mainnav.js .mainnav__toggle[aria-expanded='false'] + .mainnav__list {
+      display: none;
+    }
+    .mainnav__list {
+      border-top: 1px solid var(--color-border);
+      margin-top: var(--space-3);
+      padding-top: var(--space-2);
+    }
+    .mainnav__sub a {
+      padding-left: var(--space-5);
+      font-weight: 400;
+    }
+  }
+
+  /* Desktop: horizontal menu with a dropdown for the committee pages */
+  @media (min-width: 48em) {
+    .mainnav__toggle { display: none; }
+    .mainnav__list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: var(--space-1);
+    }
+    .mainnav__item { position: relative; }
+    .has-children > a::after {
+      content: '';
+      display: inline-block;
+      margin-left: 0.4em;
+      vertical-align: 0.2em;
+      border: 0.3em solid transparent;
+      border-top-color: currentColor;
+      border-bottom: 0;
+    }
+    .mainnav__sub {
+      position: absolute;
+      right: 0;
+      top: 100%;
+      z-index: 10;
+      min-width: 14rem;
+      padding: var(--space-2);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 24px rgb(40 0 12 / 0.12);
+      display: none;
+    }
+    .has-children:hover > .mainnav__sub,
+    .has-children:focus-within > .mainnav__sub {
+      display: block;
+    }
+    .mainnav__sub a { font-weight: 400; }
+  }
+</style>

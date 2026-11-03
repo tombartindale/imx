@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import committee from '../data/committee.json';
+import { url } from '../lib/url';
+---
+<BaseLayout
+  title="Steering Committee"
+  description="Members of the ACM IMX Steering Committee, which provides long-term strategic oversight of the conference, and its Rules and Procedures."
+>
+  <div class="container page">
+    <div class="prose">
+      <h1>Steering Committee</h1>
+      <p class="lead">
+        The Steering Committee provides long-term strategic oversight of IMX. Former members form the
+        <a href={url('honorary/')}>Honorary Committee</a>.
+      </p>
+    </div>
+
+    <h2>Members</h2>
+    <p class="note">As of {committee.asOf}.</p>
+    <ul class="people">
+      {committee.members.map((m) => (
+        <li class="person">
+          <span class="person__name">{m.name}</span>
+          {m.role && <span class="person__role">{m.role}</span>}
+          <span class="person__affiliation">{m.affiliation}</span>
+        </li>
+      ))}
+    </ul>
+
+    <div class="prose">
+      <h2>Rules and Procedures</h2>
+      <p>
+        The <a href={url('files/imx-sc-rules-and-procedures.pdf')}>Steering Committee Rules and Procedures (PDF)</a>
+        establish the committee's aims, membership, roles and responsibilities, meetings, and internal
+        communication and decision procedures.
+      </p>
+
+      <h2>Get involved</h2>
+      <ul>
+        <li><a href={url('join/')}>Join the Steering Committee</a></li>
+        <li><a href={url('student-assistant/')}>Student Assistant to the Steering Committee</a></li>
+      </ul>
+    </div>
+  </div>
+</BaseLayout>

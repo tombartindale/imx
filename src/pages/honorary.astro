@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import honorary from '../data/honorary-committee.json';
+import { url } from '../lib/url';
+---
+<BaseLayout
+  title="Honorary Committee"
+  description="Former members of the ACM IMX Steering Committee, who form its Honorary Committee."
+>
+  <div class="container page">
+    <div class="prose">
+      <h1>Honorary Committee</h1>
+      <p class="lead">
+        Former members of the <a href={url('committee/')}>Steering Committee</a> form the Honorary Committee.
+      </p>
+    </div>
+    <ul class="people">
+      {honorary.map((m) => (
+        <li class="person">
+          <span class="person__name">{m.name}</span>
+          {m.affiliation && <span class="person__affiliation">{m.affiliation}</span>}
+        </li>
+      ))}
+    </ul>
+  </div>
+</BaseLayout>

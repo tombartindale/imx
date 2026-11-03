@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.json';
+import { url } from '../lib/url';
+---
+<BaseLayout
+  title="About IMX"
+  description="What ACM IMX is, its history as the evolution of EuroITV and ACM TVX, and where to find its proceedings and awards."
+>
+  <div class="container page prose">
+    <h1>About IMX</h1>
+
+    <h2>What IMX is</h2>
+    <p>
+      The ACM International Conference on Interactive Media Experiences (IMX) is the leading international
+      forum for the presentation and discussion of research in all areas related to the architecture, design,
+      implementation, application and evaluation of interactive and immersive user experiences, both online
+      and broadcast.
+    </p>
+
+    <h2>History</h2>
+    <p>
+      IMX is the evolution of the EuroITV conference on interactive TV and of ACM TVX. Its incorporation
+      under the ACM banner, sponsored by ACM SIGCHI in cooperation with ACM SIGMM and ACM SIGWEB, extended
+      its international reach and significance.
+    </p>
+    <p>
+      Read more about <a href={site.imxHistoryUrl}>the evolution of IMX within the context of SIGCHI conferences</a>.
+    </p>
+
+    <h2>Proceedings and awards</h2>
+    <p>
+      The proceedings of all editions, including paper awards, are in the
+      <a href={site.acmDlUrl}>ACM Digital Library</a>.
+    </p>
+
+    <h2>Archive</h2>
+    <p>
+      Journal special issues and edited books associated with IMX and its predecessor conferences are listed in
+      the <a href={url('archive/')}>Special Issues archive</a>.
+    </p>
+  </div>
+</BaseLayout>

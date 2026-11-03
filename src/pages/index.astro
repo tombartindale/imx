@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.json';
+import { url } from '../lib/url';
+---
+<BaseLayout
+  isHome
+  title="ACM IMX Steering Committee"
+  description="Home of the ACM IMX Steering Committee, which provides long-term oversight of the ACM International Conference on Interactive Media Experiences."
+>
+  <div class="container page">
+    <div class="prose">
+      <h1>ACM IMX Steering Committee</h1>
+      <p class="lead">
+        ACM IMX is the leading international conference for presentation and discussion of research into
+        interactive media experiences. The conference brings together international researchers and
+        practitioners from a wide range of disciplines, ranging from human-computer interaction, multimedia
+        engineering and design to media studies, media psychology and sociology.
+      </p>
+      <p>
+        This site is the home of the IMX Steering Committee, which provides long-term oversight of the
+        conference: guiding its direction, supporting organising committees and choosing future hosts.
+      </p>
+      <p>
+        <a class="button button--large" href={site.latestImxUrl}>Go to the latest IMX</a>
+      </p>
+    </div>
+
+    <ul class="cards">
+      <li>
+        <div class="card" style="--card-accent: var(--color-pink)">
+          <h2><a href={url('host/')}>Host IMX</a></h2>
+          <p>Propose a future edition of the conference. Proposals are welcome at any time.</p>
+        </div>
+      </li>
+      <li>
+        <div class="card" style="--card-accent: var(--color-orange)">
+          <h2><a href={url('join/')}>Join the Steering Committee</a></h2>
+          <p>Help shape the future direction of IMX. Expressions of interest are welcome at any time.</p>
+        </div>
+      </li>
+      <li>
+        <div class="card" style="--card-accent: var(--color-teal)">
+          <h2><a href={site.acmDlUrl}>Proceedings and awards</a></h2>
+          <p>Proceedings of every edition, including paper awards, in the ACM Digital Library.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</BaseLayout>

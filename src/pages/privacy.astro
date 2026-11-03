@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.json';
+---
+<BaseLayout
+  title="Privacy"
+  description="Privacy statement for the ACM IMX Steering Committee website: no cookies, no tracking, no analytics."
+>
+  <div class="container page prose">
+    <h1>Privacy statement</h1>
+    <ul>
+      <li>This website does not use cookies.</li>
+      <li>It does not use analytics or tracking of any kind.</li>
+      <li>It does not load fonts, scripts or other content from third-party services.</li>
+    </ul>
+    <p>
+      Like any website, the web server may keep standard technical logs (such as IP addresses and the pages
+      requested) for security and maintenance. These are not used to identify or profile visitors.
+    </p>
+    <p>
+      If you email the Steering Committee, your message and address are used only to reply to you and to
+      handle your enquiry.
+    </p>
+    <p>
+      Questions: <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
+    </p>
+  </div>
+</BaseLayout>

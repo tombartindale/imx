@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.json';
+import { url } from '../lib/url';
+---
+<BaseLayout
+  noindex
+  title="Page not found"
+  description="The page you were looking for could not be found."
+>
+  <div class="container page prose">
+    <h1>Page not found</h1>
+    <p class="lead">
+      Sorry, we could not find that page. Some addresses from the previous version of this site no longer work.
+    </p>
+    <ul>
+      <li><a href={url()}>Home</a></li>
+      <li><a href={url('about/')}>About IMX</a></li>
+      <li><a href={url('host/')}>Host IMX</a></li>
+      <li><a href={url('committee/')}>Steering Committee</a></li>
+      <li><a href={site.acmDlUrl}>IMX proceedings and awards in the ACM Digital Library</a></li>
+    </ul>
+    <p>Looking for the conference itself? <a href={site.latestImxUrl}>Go to the latest IMX</a>.</p>
+  </div>
+</BaseLayout>

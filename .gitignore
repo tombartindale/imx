@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+.env
+.env.*
+
+# Brand source files: decide before committing to a public repo (see brand/BRAND.md)
+# brand/IMX Branding/*.indd
+# brand/IMX Branding/*.ai
+
+# Copies of the old WordPress pages (contain personal email addresses)
+content-source/
+brand/

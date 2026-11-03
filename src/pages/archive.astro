@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import issues from '../data/special-issues.json';
+---
+<BaseLayout
+  title="Archive: Special Issues"
+  description="Archive of journal special issues and edited books associated with ACM IMX and its predecessor conferences, 2007–2015."
+>
+  <div class="container page prose">
+    <h1>Archive: Special Issues</h1>
+    <p class="lead">
+      This page is an archive of journal special issues and edited books associated with IMX and its
+      predecessor conferences (2007–2015). It is no longer being added to.
+    </p>
+    <ul class="citations">
+      {issues.map((i) => (
+        <li>
+          {i.url ? <a href={i.url}>{i.title}</a> : <span>{i.title}</span>}.
+          <span class="citation__venue">{i.venue}</span>, {i.date}.
+        </li>
+      ))}
+    </ul>
+  </div>
+</BaseLayout>

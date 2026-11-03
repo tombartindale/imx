@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.json';
+---
+<BaseLayout
+  title="Join the Steering Committee"
+  description="Expressions of interest are welcome from researchers and practitioners who would like to help shape the future direction of ACM IMX."
+>
+  <div class="container page prose">
+    <h1>Join the Steering Committee</h1>
+    <p class="lead">
+      The Steering Committee (SC) of the ACM International Conference on Interactive Media Experiences (IMX)
+      welcomes expressions of interest from researchers and practitioners who would like to help shape the
+      future direction of the conference.
+    </p>
+
+    <h2>About IMX</h2>
+    <p>
+      ACM IMX is the leading international conference for presentation and discussion of research into
+      interactive media experiences. The conference brings together international researchers and
+      practitioners from a wide range of disciplines, ranging from human-computer interaction, multimedia
+      engineering and design to media studies, media psychology and sociology. IMX is sponsored by ACM SIGCHI,
+      in cooperation with SIGMM and SIGWEB, and has its roots in EuroITV and ACM TVX.
+    </p>
+
+    <h2>Role of the Steering Committee</h2>
+    <ul>
+      <li>Guiding the overall direction and vision of the conference</li>
+      <li>Supporting and mentoring General Chairs and organising committees</li>
+      <li>Reviewing and approving proposals to host future editions</li>
+      <li>Maintaining conference policies, procedures and quality standards</li>
+      <li>Promoting the conference and growing the community internationally</li>
+      <li>Liaising with ACM and its Special Interest Groups</li>
+    </ul>
+
+    <h2>Who should apply</h2>
+    <p>
+      We welcome expressions of interest from people with an active connection to the IMX community and a
+      commitment to its growth. We are particularly interested in candidates who have:
+    </p>
+    <ul>
+      <li>experience publishing at or organising IMX, or its predecessors TVX and EuroITV</li>
+      <li>expertise in the conference's core research areas</li>
+      <li>willingness to contribute time to meetings and tasks</li>
+      <li>perspectives that broaden the diversity of the committee, including geography, discipline, career stage and background</li>
+    </ul>
+    <p>Prior senior organising experience is valued but not essential.</p>
+
+    <h2>What to include</h2>
+    <p>
+      Please send an expression of interest of no more than one page to
+      <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>, including:
+    </p>
+    <ol>
+      <li>your name, affiliation and role</li>
+      <li>your involvement with the IMX community</li>
+      <li>what you would bring to the committee and why you are interested</li>
+      <li>relevant conference-organisation, community-building or service experience</li>
+    </ol>
+
+    <h2>Timeline</h2>
+    <p>
+      Expressions of interest are accepted at any time. New members are normally announced at the IMX
+      conference each year.
+    </p>
+
+    <h2>Questions</h2>
+    <p>
+      For informal enquiries, please contact the SC President via
+      <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
+    </p>
+
+    <p><em>
+      IMX is committed to building an inclusive and welcoming community. We encourage expressions of interest
+      from individuals of all backgrounds.
+    </em></p>
+  </div>
+</BaseLayout>

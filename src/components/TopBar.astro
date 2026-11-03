@@ -1,0 +1,57 @@
+---
+import site from '../data/site.json';
+---
+<div class="topbar">
+  <div class="container topbar__inner">
+    <ul class="topbar__links">
+      <li>
+        <a href={`mailto:${site.contactEmail}`}>
+          <span class="visually-hidden">Email the Steering Committee: </span>{site.contactEmail}
+        </a>
+      </li>
+      <li class="topbar__sigchi"><a href={site.sigchiUrl}>SIGCHI conferences</a></li>
+    </ul>
+    <a class="button topbar__cta" href={site.latestImxUrl}>Go to the latest IMX</a>
+  </div>
+</div>
+
+<style>
+  .topbar {
+    background: var(--color-topbar-bg);
+    color: var(--color-topbar-text);
+    font-size: 0.95rem;
+  }
+  .topbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-block: var(--space-2);
+  }
+  .topbar__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-4);
+    min-width: 0;
+  }
+  .topbar__links li + li { margin-top: 0; }
+  .topbar__links a {
+    color: var(--color-topbar-text);
+    overflow-wrap: anywhere;
+  }
+  .topbar__links a:hover { color: var(--color-topbar-text); }
+  .topbar :focus-visible { outline-color: var(--color-topbar-text); }
+  .topbar__cta {
+    flex-shrink: 0;
+    font-size: 0.95rem;
+    padding: 0.45em 0.9em;
+    border-color: var(--color-topbar-text);
+  }
+  /* Mobile: email + button only; SIGCHI link moves to the footer */
+  @media (max-width: 40em) {
+    .topbar__sigchi { display: none; }
+  }
+</style>

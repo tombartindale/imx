@@ -1,0 +1,39 @@
+name: Deploy
+on:
+  push:
+    branches: [main, staging]
+  workflow_dispatch:
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    # main -> production (live), staging branch -> staging
+    environment: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+    concurrency:
+      group: deploy-${{ github.ref_name }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+        env:
+          BASE_PATH: ${{ github.ref_name == 'main' && '/sc' || '/sc-test' }}
+          PUBLIC_ENV: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+      - name: Check internal links
+        run: npm run check:links
+        env:
+          BASE_PATH: ${{ github.ref_name == 'main' && '/sc' || '/sc-test' }}
+      - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./dist/
+          server-dir: /
+          # security: loose   # only if the TLS certificate hostname cannot be matched
