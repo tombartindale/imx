@@ -19,14 +19,16 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
+      # Pre-launch: every build targets /sc-test/ (noindex), matching the test@ FTP account.
+      # At go-live, set BASE_PATH to '/sc' and PUBLIC_ENV to 'production' for main.
       - run: npm run build
         env:
-          BASE_PATH: ${{ github.ref_name == 'main' && '/sc' || '/sc-test' }}
-          PUBLIC_ENV: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+          BASE_PATH: /sc-test
+          PUBLIC_ENV: staging
       - name: Check internal links
         run: npm run check:links
         env:
-          BASE_PATH: ${{ github.ref_name == 'main' && '/sc' || '/sc-test' }}
+          BASE_PATH: /sc-test
       - uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         # FTP_SERVER and FTP_USERNAME are environment variables; only the password is a secret.
         with:
