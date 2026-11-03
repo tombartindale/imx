@@ -381,7 +381,7 @@ SSH/rsync and cPanel Git pull are **not** used.
 **GitHub setup**
 
 1. Create two GitHub **Environments** (Settings → Environments): `staging` and `production`.
-2. Add the same three secret names to each environment, with different values: `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`.
+2. In each environment, add two **variables** (`FTP_SERVER`, `FTP_USERNAME`) and one **secret** (`FTP_PASSWORD`), with different values per environment. The workflow reads `vars.FTP_SERVER`, `vars.FTP_USERNAME` and `secrets.FTP_PASSWORD`.
 3. On `production`, enable **required reviewers** (optional but recommended) and restrict it to the `main` branch.
 4. Protect `main` (pull request required).
 
