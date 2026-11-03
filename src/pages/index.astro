@@ -8,9 +8,34 @@ import { url } from '../lib/url';
   title="ACM IMX Steering Committee"
   description="Home of the ACM IMX Steering Committee, which provides long-term oversight of the ACM International Conference on Interactive Media Experiences."
 >
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <h1 id="hero-title">ACM IMX Steering Committee</h1>
+        <p class="hero__lead">
+          The leading international conference for research into interactive media experiences.
+        </p>
+        <p>
+          <a class="hero__button" href={site.latestImxUrl}>Find out about the latest IMX</a>
+        </p>
+      </div>
+    </div>
+    {/* Decorative: the logo is already in the header, so alt is empty */}
+    <picture>
+      <source srcset={url('images/hero.webp')} type="image/webp" />
+      <img
+        class="hero__image"
+        src={url('images/hero.jpg')}
+        alt=""
+        width="1760"
+        height="1100"
+        fetchpriority="high"
+      />
+    </picture>
+  </section>
+
   <div class="container page">
-    <div class="prose">
-      <h1>ACM IMX Steering Committee</h1>
+    <div class="prose intro">
       <p class="lead">
         ACM IMX is the leading international conference for presentation and discussion of research into
         interactive media experiences. The conference brings together international researchers and
@@ -20,9 +45,6 @@ import { url } from '../lib/url';
       <p>
         This site is the home of the IMX Steering Committee, which provides long-term oversight of the
         conference: guiding its direction, supporting organising committees and choosing future hosts.
-      </p>
-      <p>
-        <a class="button button--large" href={site.latestImxUrl}>Go to the latest IMX</a>
       </p>
     </div>
 
@@ -48,3 +70,89 @@ import { url } from '../lib/url';
     </ul>
   </div>
 </BaseLayout>
+
+<style>
+  /* Intro under the band: centred */
+  .intro {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  /* Full-width band in the pink at the image's left edge, so the image blends in */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-hero-bg);
+    color: var(--color-on-hero);
+  }
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    padding-block: var(--space-5) var(--space-3);
+  }
+  .hero h1 {
+    color: var(--color-on-hero);
+    margin-bottom: var(--space-3);
+  }
+  /* White on the brand pink is 3.9:1, so hero text stays at large-text sizes (24px+) */
+  .hero__lead {
+    font-size: 1.5rem;
+    line-height: 1.45;
+    margin-bottom: var(--space-4);
+  }
+  .hero__button {
+    display: inline-block;
+    padding: 0.8em 1.4em;
+    border-radius: var(--radius);
+    background: var(--color-on-hero);
+    color: var(--color-accent-strong);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+  }
+  .hero__button:hover,
+  .hero__button:focus-visible {
+    color: var(--color-accent-strong-hover);
+    text-decoration: none;
+  }
+  .hero :focus-visible { outline-color: var(--color-on-hero); }
+  .hero p:last-child { margin-bottom: 0; }
+
+  /* Narrow screens: image sits below the text; fade its top edge into the band */
+  .hero__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 25%);
+    mask-image: linear-gradient(to bottom, transparent, #000 25%);
+  }
+
+  /* Wide screens: text on the left, image pinned to the right edge of the window.
+     The band height scales with the window, so the image (about 1.6:1) always
+     fills roughly the right 55% and its logo stays clear of the text column. */
+  @media (min-width: 64em) {
+    .hero {
+      display: flex;
+      align-items: center;
+      min-height: clamp(24rem, 36vw, 34rem);
+    }
+    .hero__inner {
+      padding-block: var(--space-5);
+    }
+    .hero__text {
+      max-width: min(30rem, 38vw);
+    }
+    .hero__image {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: auto;
+      height: 100%;
+      max-width: none;
+      /* Fade the left edge into the band colour to hide the seam */
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 12%);
+      mask-image: linear-gradient(to right, transparent, #000 12%);
+    }
+  }
+</style>

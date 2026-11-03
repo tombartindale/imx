@@ -19,6 +19,9 @@ function htaccess() {
         const lines = [
           '# Generated at build time by astro.config.mjs. Do not edit in dist/.',
           '',
+          '# Serve the static index.html first, even if a stray index.php exists',
+          'DirectoryIndex index.html',
+          '',
           'RewriteEngine On',
           '',
           '# Force HTTPS',

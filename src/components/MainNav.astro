@@ -77,11 +77,14 @@ const inSection = (item: NavItem) =>
     text-decoration: none;
     border-radius: var(--radius);
   }
-  .mainnav a:hover {
+  .mainnav a:hover,
+  .mainnav a:focus-visible {
     color: var(--color-link);
-    text-decoration: underline;
+    text-decoration-color: transparent;
   }
-  .mainnav a[aria-current='page'] {
+  /* Current page marker (a state indicator, not a link underline) */
+  .mainnav a[aria-current='page'],
+  .mainnav a[aria-current='page']:hover {
     color: var(--color-link);
     text-decoration: underline;
     text-decoration-thickness: 3px;

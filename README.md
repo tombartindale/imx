@@ -1,6 +1,6 @@
 # ACM IMX Steering Committee website
 
-Static Astro site for `https://imx.acm.org/sc/`. The full specification is in [imx-sc-website-spec.md](imx-sc-website-spec.md); brand decisions are in [brand/BRAND.md](brand/BRAND.md).
+Static Astro site for `https://imx.acm.org/sc/`. The full specification is in [imx-sc-website-spec.md](imx-sc-website-spec.md); brand decisions are in `brand/BRAND.md`, which is kept out of the repo along with the rest of `brand/` (brand source files are not published).
 
 ## Develop
 

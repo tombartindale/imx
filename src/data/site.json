@@ -4,5 +4,7 @@
   "latestImxUrl": "https://imx.acm.org",
   "acmDlUrl": "https://dl.acm.org/conference/imx/proceedings",
   "sigchiUrl": "https://sigchi.org/conferences/",
-  "imxHistoryUrl": "https://dl.acm.org/doi/10.1145/3568732"
+  "imxHistoryUrl": "https://dl.acm.org/doi/10.1145/3568732",
+  "sigchiPoliciesUrl": "https://sigchi.org/about/sigchi-policies/",
+  "sigchiOrganizersUrl": "https://sigchi.org/resources/guides-for-organizers/"
 }

@@ -9,9 +9,9 @@ import site from '../data/site.json';
           <span class="visually-hidden">Email the Steering Committee: </span>{site.contactEmail}
         </a>
       </li>
-      <li class="topbar__sigchi"><a href={site.sigchiUrl}>SIGCHI conferences</a></li>
+      <li class="topbar__sigchi"><span class="topbar__sep" aria-hidden="true">·</span><a href={site.sigchiUrl}>a SIGCHI Conference</a></li>
     </ul>
-    <a class="button topbar__cta" href={site.latestImxUrl}>Go to the latest IMX</a>
+    <a class="button topbar__cta" href={site.latestImxUrl}>Find out about the latest IMX</a>
   </div>
 </div>
 
@@ -34,15 +34,21 @@ import site from '../data/site.json';
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-1) var(--space-4);
+    gap: var(--space-1) var(--space-2);
     min-width: 0;
   }
   .topbar__links li + li { margin-top: 0; }
+  .topbar__sep { margin-right: var(--space-2); }
   .topbar__links a {
     color: var(--color-topbar-text);
+    text-decoration: none;
     overflow-wrap: anywhere;
   }
-  .topbar__links a:hover { color: var(--color-topbar-text); }
+  .topbar__links a:hover,
+  .topbar__links a:focus-visible {
+    color: var(--color-topbar-link-hover);
+    text-decoration: none;
+  }
   .topbar :focus-visible { outline-color: var(--color-topbar-text); }
   .topbar__cta {
     flex-shrink: 0;
@@ -53,5 +59,12 @@ import site from '../data/site.json';
   /* Mobile: email + button only; SIGCHI link moves to the footer */
   @media (max-width: 40em) {
     .topbar__sigchi { display: none; }
+    .topbar__links a { white-space: nowrap; }
+    /* Let the longer button label wrap rather than squeeze the email address */
+    .topbar__cta {
+      max-width: 10.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
   }
 </style>

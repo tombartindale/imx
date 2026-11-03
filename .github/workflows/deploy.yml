@@ -13,8 +13,8 @@ jobs:
       group: deploy-${{ github.ref_name }}
       cancel-in-progress: false
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -27,7 +27,7 @@ jobs:
         run: npm run check:links
         env:
           BASE_PATH: ${{ github.ref_name == 'main' && '/sc' || '/sc-test' }}
-      - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         # FTP_SERVER and FTP_USERNAME are environment variables; only the password is a secret.
         with:
           server: ${{ vars.FTP_SERVER }}
