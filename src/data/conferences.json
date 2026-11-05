@@ -1,0 +1,378 @@
+[
+  {
+    "year": 2026,
+    "name": "IMX 2026",
+    "city": "Athlone",
+    "country": "Ireland",
+    "format": "in-person",
+    "website": "https://imx.acm.org/2026/",
+    "proceedings": [
+      {
+        "label": "Proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/3788851"
+      }
+    ],
+    "notes": "Format assumed in-person (no hybrid/virtual info found). No 2026 workshop proceedings found on SBC SOL or Crossref as of 2026-11-04."
+  },
+  {
+    "year": 2025,
+    "name": "IMX 2025",
+    "city": "Niterói",
+    "country": "Brazil",
+    "format": "in-person",
+    "website": "https://imx.acm.org/2025/",
+    "proceedings": [
+      {
+        "label": "Proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/3706370"
+      },
+      {
+        "label": "Workshop proceedings",
+        "url": "https://sol.sbc.org.br/index.php/imxw/issue/view/1503"
+      }
+    ],
+    "notes": "Format assumed in-person."
+  },
+  {
+    "year": 2024,
+    "name": "IMX 2024",
+    "city": "Stockholm",
+    "country": "Sweden",
+    "format": "in-person",
+    "website": "https://imx.acm.org/2024/",
+    "proceedings": [
+      {
+        "label": "Proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/3639701"
+      },
+      {
+        "label": "Workshop proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/3672406"
+      }
+    ],
+    "notes": "Format assumed in-person."
+  },
+  {
+    "year": 2023,
+    "name": "IMX 2023",
+    "city": "Nantes",
+    "country": "France",
+    "format": "in-person",
+    "website": "https://imx.acm.org/2023/",
+    "proceedings": [
+      {
+        "label": "Proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/3573381"
+      },
+      {
+        "label": "Workshop proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/3604321"
+      }
+    ],
+    "notes": "Format assumed in-person."
+  },
+  {
+    "year": 2022,
+    "name": "IMX 2022",
+    "city": "Aveiro",
+    "country": "Portugal",
+    "format": "hybrid",
+    "website": "https://imx.acm.org/2022/",
+    "proceedings": [
+      {
+        "label": "Proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/3505284"
+      },
+      {
+        "label": "SensoryX workshop",
+        "url": "https://sol.sbc.org.br/index.php/sensoryx/issue/view/919"
+      },
+      {
+        "label": "LIQUE workshop",
+        "url": "https://sol.sbc.org.br/index.php/lique/issue/view/918"
+      }
+    ],
+    "notes": "Hybrid inferred from 'Virtual Participation' page on conference site."
+  },
+  {
+    "year": 2021,
+    "name": "IMX 2021",
+    "city": "New York",
+    "country": "USA",
+    "format": "virtual",
+    "website": "https://imx.acm.org/2021/",
+    "proceedings": [
+      {
+        "label": "Proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/3452918"
+      },
+      {
+        "label": "SensoryX workshop",
+        "url": "https://sol.sbc.org.br/index.php/sensoryx/issue/view/748"
+      },
+      {
+        "label": "LIQUE workshop",
+        "url": "https://sol.sbc.org.br/index.php/lique/issue/view/752"
+      },
+      {
+        "label": "XR in Games workshop",
+        "url": "https://sol.sbc.org.br/index.php/xr_in_games/issue/view/747"
+      }
+    ],
+    "notes": "Site states held virtually (OhYay)."
+  },
+  {
+    "year": 2020,
+    "name": "IMX 2020",
+    "city": "Barcelona",
+    "country": "Spain",
+    "format": "virtual",
+    "website": "https://web.archive.org/web/20200515082321/https://imx.acm.org/2020/",
+    "proceedings": [
+      {
+        "label": "Proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/3391614"
+      }
+    ],
+    "notes": "imx.acm.org/2020 returns HTTP 500; archive.org used. Crossref lists location as Cornellà, Barcelona."
+  },
+  {
+    "year": 2019,
+    "name": "TVX 2019",
+    "city": "Salford (Manchester)",
+    "country": "UK",
+    "format": "in-person",
+    "website": "https://web.archive.org/web/20190415160221/https://tvx.acm.org/2019/",
+    "proceedings": [
+      {
+        "label": "Proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/3317697"
+      }
+    ],
+    "notes": "tvx.acm.org/2019 returns HTTP 500; archive.org used. Held at MediaCityUK."
+  },
+  {
+    "year": 2018,
+    "name": "TVX 2018",
+    "city": "Seoul",
+    "country": "South Korea",
+    "format": "in-person",
+    "website": "https://web.archive.org/web/20180531141451/http://tvx.acm.org:80/2018/",
+    "proceedings": [
+      {
+        "label": "Proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/3210825"
+      }
+    ],
+    "notes": "tvx.acm.org/2018 returns HTTP 500; archive.org used."
+  },
+  {
+    "year": 2017,
+    "name": "TVX 2017",
+    "city": "Hilversum",
+    "country": "Netherlands",
+    "format": "in-person",
+    "website": "https://web.archive.org/web/20170701102211/https://tvx.acm.org/2017/",
+    "proceedings": [
+      {
+        "label": "Proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/3077548"
+      },
+      {
+        "label": "Adjunct proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/3084289"
+      }
+    ],
+    "notes": "tvx.acm.org/2017 returns HTTP 500 and tvx2017.com is dead; archive.org used."
+  },
+  {
+    "year": 2016,
+    "name": "TVX 2016",
+    "city": "Chicago",
+    "country": "USA",
+    "format": "in-person",
+    "website": "https://tvx.acm.org/2016/",
+    "proceedings": [
+      {
+        "label": "Proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/2932206"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "year": 2015,
+    "name": "TVX 2015",
+    "city": "Brussels",
+    "country": "Belgium",
+    "format": "in-person",
+    "website": "https://tvx.acm.org/2015/",
+    "proceedings": [
+      {
+        "label": "Proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/2745197"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "year": 2014,
+    "name": "TVX 2014",
+    "city": "Newcastle upon Tyne",
+    "country": "UK",
+    "format": "in-person",
+    "website": "https://tvx.acm.org/2014/",
+    "proceedings": [
+      {
+        "label": "Proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/2602299"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "year": 2013,
+    "name": "EuroITV 2013",
+    "city": "Como",
+    "country": "Italy",
+    "format": "in-person",
+    "website": "https://web.archive.org/web/20130510194711/http://euroitv2013.org",
+    "proceedings": [
+      {
+        "label": "Proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/2465958"
+      }
+    ],
+    "notes": "Original domain dead; archive.org used."
+  },
+  {
+    "year": 2012,
+    "name": "EuroITV 2012",
+    "city": "Berlin",
+    "country": "Germany",
+    "format": "in-person",
+    "website": "https://web.archive.org/web/20120611012545/http://www.euroitv2012.org:80/",
+    "proceedings": [
+      {
+        "label": "Proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/2325616"
+      }
+    ],
+    "notes": "Original domain now hosts unrelated content; archive.org used."
+  },
+  {
+    "year": 2011,
+    "name": "EuroITV 2011",
+    "city": "Lisbon",
+    "country": "Portugal",
+    "format": "in-person",
+    "website": "https://web.archive.org/web/20110704042943/http://www.euroitv2011.org/",
+    "proceedings": [
+      {
+        "label": "Proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/2000119"
+      }
+    ],
+    "notes": "Original domain dead; archive.org used."
+  },
+  {
+    "year": 2010,
+    "name": "EuroITV 2010",
+    "city": "Tampere",
+    "country": "Finland",
+    "format": "in-person",
+    "website": "https://web.archive.org/web/20100610064209/http://www.euroitv2010.org:80/",
+    "proceedings": [
+      {
+        "label": "Proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/1809777"
+      }
+    ],
+    "notes": "Original domain now hosts unrelated content; archive.org used."
+  },
+  {
+    "year": 2009,
+    "name": "EuroITV 2009",
+    "city": "Leuven",
+    "country": "Belgium",
+    "format": "in-person",
+    "website": "https://web.archive.org/web/20090215011035/http://euroitv2009.org:80/",
+    "proceedings": [
+      {
+        "label": "Proceedings",
+        "url": "https://dl.acm.org/doi/proceedings/10.1145/1542084"
+      }
+    ],
+    "notes": "Original domain now hosts unrelated content; archive.org used."
+  },
+  {
+    "year": 2008,
+    "name": "EuroITV 2008",
+    "city": "Salzburg",
+    "country": "Austria",
+    "format": "in-person",
+    "website": "https://web.archive.org/web/20080511171809/http://www.euroitv2008.org/",
+    "proceedings": [
+      {
+        "label": "Proceedings",
+        "url": "https://doi.org/10.1007/978-3-540-69478-6"
+      }
+    ],
+    "notes": "Springer LNCS 5066, 'Changing Television Environments'. Original domain dead; archive.org used."
+  },
+  {
+    "year": 2007,
+    "name": "EuroITV 2007",
+    "city": "Amsterdam",
+    "country": "Netherlands",
+    "format": "in-person",
+    "website": null,
+    "proceedings": [
+      {
+        "label": "Proceedings",
+        "url": "https://doi.org/10.1007/978-3-540-72559-6"
+      }
+    ],
+    "notes": "Springer LNCS 4471, 'Interactive TV: a Shared Experience'. No website or archive snapshot found."
+  },
+  {
+    "year": 2006,
+    "name": "EuroITV 2006",
+    "city": "Athens",
+    "country": "Greece",
+    "format": "in-person",
+    "website": null,
+    "proceedings": [],
+    "notes": "Location from the EuroITV 2009 proceedings preface. No website, archive snapshot or online proceedings found."
+  },
+  {
+    "year": 2005,
+    "name": "EuroITV 2005",
+    "city": "Aalborg",
+    "country": "Denmark",
+    "format": "in-person",
+    "website": null,
+    "proceedings": [],
+    "notes": "Location from the EuroITV 2009 proceedings preface. No website, archive snapshot or online proceedings found."
+  },
+  {
+    "year": 2004,
+    "name": "EuroITV 2004",
+    "city": "Brighton",
+    "country": "UK",
+    "format": "in-person",
+    "website": null,
+    "proceedings": [],
+    "notes": "2nd European Conference on Interactive Television; proceedings printed by University of Brighton (not online). No website found."
+  },
+  {
+    "year": 2003,
+    "name": "EuroITV 2003",
+    "city": "Brighton",
+    "country": "UK",
+    "format": "in-person",
+    "website": null,
+    "proceedings": [],
+    "notes": "1st edition, 2–4 April 2003. No website, archive snapshot or online proceedings found."
+  }
+]

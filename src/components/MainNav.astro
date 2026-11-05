@@ -1,16 +1,20 @@
 ---
 import { url } from '../lib/url';
 
-interface NavItem { label: string; href: string; children?: NavItem[] }
+interface NavLink { label: string; href: string }
+// A group has no page of its own: its label only opens the submenu.
+interface NavGroup { label: string; id: string; children: NavLink[] }
+type NavItem = NavLink | NavGroup;
 
 const items: NavItem[] = [
-  { label: 'Home', href: url() },
   { label: 'About IMX', href: url('about/') },
+  { label: 'Past Conferences', href: url('history/') },
   { label: 'Host IMX', href: url('host/') },
   {
     label: 'Steering Committee',
-    href: url('committee/'),
+    id: 'committee',
     children: [
+      { label: 'Current Members', href: url('committee/') },
       { label: 'Join the SC', href: url('join/') },
       { label: 'Student Assistant', href: url('student-assistant/') },
       { label: 'Honorary Committee', href: url('honorary/') },
@@ -20,28 +24,37 @@ const items: NavItem[] = [
 
 const current = Astro.url.pathname.replace(/\/?$/, '/');
 const isCurrent = (href: string) => current === href;
-const inSection = (item: NavItem) =>
-  isCurrent(item.href) || (item.children ?? []).some((c) => isCurrent(c.href));
+const isGroup = (item: NavItem): item is NavGroup => 'children' in item;
+const inSection = (group: NavGroup) => group.children.some((c) => isCurrent(c.href));
 ---
 <nav class="mainnav" aria-label="Main">
   <button class="mainnav__toggle" type="button" aria-expanded="false" aria-controls="mainnav-list" hidden>
     Menu
   </button>
   <ul class="mainnav__list" id="mainnav-list">
-    {items.map((item) => (
-      <li class:list={['mainnav__item', { 'has-children': item.children, 'in-section': inSection(item) }]}>
-        <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
-        {item.children && (
-          <ul class="mainnav__sub">
+    {items.map((item) =>
+      isGroup(item) ? (
+        <li class:list={['mainnav__item', 'has-children', { 'in-section': inSection(item) }]}>
+          <button
+            class="mainnav__group"
+            type="button"
+            aria-expanded="false"
+            aria-controls={`mainnav-sub-${item.id}`}
+          >{item.label}</button>
+          <ul class="mainnav__sub" id={`mainnav-sub-${item.id}`}>
             {item.children.map((child) => (
               <li>
                 <a href={child.href} aria-current={isCurrent(child.href) ? 'page' : undefined}>{child.label}</a>
               </li>
             ))}
           </ul>
-        )}
-      </li>
-    ))}
+        </li>
+      ) : (
+        <li class="mainnav__item">
+          <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
+        </li>
+      )
+    )}
   </ul>
 </nav>
 
@@ -55,6 +68,40 @@ const inSection = (item: NavItem) =>
     btn.addEventListener('click', function () {
       var open = btn.getAttribute('aria-expanded') === 'true';
       btn.setAttribute('aria-expanded', String(!open));
+    });
+
+    // Submenu groups: the label is a button that opens and closes its list.
+    var groups = nav.querySelectorAll('.mainnav__group');
+    function close(g, refocus) {
+      if (g.getAttribute('aria-expanded') !== 'true') return;
+      g.setAttribute('aria-expanded', 'false');
+      if (refocus) g.focus();
+    }
+    groups.forEach(function (g) {
+      var item = g.parentElement;
+      g.addEventListener('click', function () {
+        var open = g.getAttribute('aria-expanded') === 'true';
+        groups.forEach(function (o) { close(o, false); });
+        g.setAttribute('aria-expanded', String(!open));
+      });
+      item.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') close(g, true);
+      });
+      item.addEventListener('focusout', function (e) {
+        if (!item.contains(e.relatedTarget)) close(g, false);
+      });
+    });
+    // On small screens, start with the current section's submenu open.
+    if (window.matchMedia('(max-width: 47.99em)').matches) {
+      nav.querySelectorAll('.in-section > .mainnav__group').forEach(function (g) {
+        g.setAttribute('aria-expanded', 'true');
+      });
+    }
+    document.addEventListener('click', function (e) {
+      if (btn.contains(e.target)) return; // opening the mobile menu isn't a click outside
+      groups.forEach(function (g) {
+        if (!g.parentElement.contains(e.target)) close(g, false);
+      });
     });
   })();
 </script>
@@ -82,6 +129,43 @@ const inSection = (item: NavItem) =>
     color: var(--color-link);
     text-decoration-color: transparent;
   }
+  .mainnav__group {
+    display: block;
+    width: 100%;
+    text-align: left;
+    font: inherit;
+    color: var(--color-heading);
+    background: none;
+    border: 0;
+    border-radius: var(--radius);
+    padding: var(--space-2) var(--space-3);
+    cursor: pointer;
+    transition: color var(--link-fade);
+  }
+  .mainnav__group:hover,
+  .mainnav__group:focus-visible {
+    color: var(--color-link);
+  }
+  .mainnav__group::after {
+    content: '';
+    display: inline-block;
+    margin-left: 0.4em;
+    vertical-align: 0.2em;
+    border: 0.3em solid transparent;
+    border-top-color: currentColor;
+    border-bottom: 0;
+    transition: transform var(--link-fade);
+  }
+  .mainnav__group[aria-expanded='true']::after { transform: rotate(180deg); }
+  /* The group label is marked when you're on one of its pages */
+  .in-section > .mainnav__group {
+    color: var(--color-link);
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: var(--color-pink);
+    text-underline-offset: 0.2em;
+  }
+
   /* Current page marker (a state indicator, not a link underline) */
   .mainnav a[aria-current='page'],
   .mainnav a[aria-current='page']:hover {
@@ -124,6 +208,9 @@ const inSection = (item: NavItem) =>
       padding-left: var(--space-5);
       font-weight: 400;
     }
+    .mainnav.js .mainnav__group[aria-expanded='false'] + .mainnav__sub {
+      display: none;
+    }
   }
 
   /* Desktop: horizontal menu with a dropdown for the committee pages */
@@ -136,15 +223,7 @@ const inSection = (item: NavItem) =>
       gap: var(--space-1);
     }
     .mainnav__item { position: relative; }
-    .has-children > a::after {
-      content: '';
-      display: inline-block;
-      margin-left: 0.4em;
-      vertical-align: 0.2em;
-      border: 0.3em solid transparent;
-      border-top-color: currentColor;
-      border-bottom: 0;
-    }
+    .mainnav__group { width: auto; }
     .mainnav__sub {
       position: absolute;
       right: 0;
@@ -159,7 +238,8 @@ const inSection = (item: NavItem) =>
       display: none;
     }
     .has-children:hover > .mainnav__sub,
-    .has-children:focus-within > .mainnav__sub {
+    .mainnav__group[aria-expanded='true'] + .mainnav__sub,
+    .mainnav:not(.js) .has-children:focus-within > .mainnav__sub {
       display: block;
     }
     .mainnav__sub a { font-weight: 400; }

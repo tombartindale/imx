@@ -22,6 +22,7 @@ Staging build: `BASE_PATH=/sc-test PUBLIC_ENV=staging npm run build`. It adds `n
 | Honorary committee | `src/data/honorary-committee.json` |
 | Contact address or key URLs | `src/data/site.json` |
 | Special issues archive | `src/data/special-issues.json` |
+| Past conferences (add each edition after it happens) | `src/data/conferences.json` |
 | Page text | the relevant file in `src/pages/` |
 | Replace a PDF | `public/files/` (keep the same filename) |
 | Redirects, 404, server rules | `htaccess()` in `astro.config.mjs` (the `.htaccess` is generated at build time) |

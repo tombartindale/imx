@@ -9,7 +9,7 @@ This document is the single source of truth for the rebuild. Where it says "copy
 ## 1. Goals and principles
 
 1. **Static, non-recent content only.** No page may name or describe a specific conference edition, "upcoming" or "current" events, or time-sensitive claims. Use evergreen wording; any date must carry its year.
-2. **Do not duplicate the ACM Digital Library.** The conference series list and the Best Papers/awards list are removed, because they are represented in the ACM DL. Link to the DL instead.
+2. **Do not duplicate the ACM Digital Library.** The Best Papers/awards list is removed, because it is represented in the ACM DL. Link to the DL instead. The list of past editions *is* kept (as Past Conferences, section 3.9), because the SC asked for it: it records where each edition was held and links to websites and proceedings, including workshop proceedings published outside the ACM DL.
 3. **The latest conference is reached by one button** linking to `https://imx.acm.org` (always points at the current edition). The site never hard-codes an edition.
 4. **No server-side dependencies.** Output is plain HTML/CSS (minimal or no JS) that runs on any Apache host. No WordPress, PHP, database or SSI.
 5. **Easy to update.** Content lives in Markdown and small data files, edited via GitHub, deployed automatically.
@@ -30,15 +30,18 @@ Slim strip, rendered once in the shared layout:
 
 ### 2.2 Main menu
 
-1. Home `/sc/`
-2. About IMX `/sc/about/`
+There is no Home item: the header logo links to the home page `/sc/`.
+
+1. About IMX `/sc/about/`
+2. Past Conferences `/sc/history/`
 3. Host IMX `/sc/host/`
-4. Steering Committee `/sc/committee/`
+4. Steering Committee (submenu label only; it is a button that opens the submenu, not a link)
+   - Current Members `/sc/committee/`
    - Join the SC `/sc/join/`
    - Student Assistant `/sc/student-assistant/`
    - Honorary Committee `/sc/honorary/`
 
-All slugs are flat (one level) and short. The three submenu pages are shown under Steering Committee in the menu only; their URLs are not nested.
+All slugs are flat (one level) and short. The submenu pages are grouped under Steering Committee in the menu only; their URLs are not nested.
 
 | Old WordPress slug | New slug |
 |---|---|
@@ -47,7 +50,8 @@ All slugs are flat (one level) and short. The three submenu pages are shown unde
 | `/sc/committee/open-call-student-assistant-to-the-acm-imx-steering-committee/` | `/sc/student-assistant/` |
 | `/sc/committee/honorary-committee/` | `/sc/honorary/` |
 | `/sc/special-issues/` | `/sc/archive/` |
-| `/sc/conference-series/`, `/sc/best-papers/` | removed (see section 4) |
+| `/sc/conference-series/` | `/sc/history/` (redirected) |
+| `/sc/best-papers/` | removed (see section 4) |
 
 ### 2.3 Footer
 
@@ -149,11 +153,17 @@ Carry across the live page, lightly edited. Final copy:
 - Heading: "Archive: Special Issues". Intro note: "This page is an archive of journal special issues and edited books associated with IMX and its predecessor conferences (2007–2015). It is no longer being added to."
 - Render from `src/data/special-issues.json` (see section 6). Keep indexable (no `noindex`) unless the SC decides otherwise.
 
+### 3.9 Past Conferences (`/sc/history/`)
+
+- In the main menu, and linked from About IMX (History section).
+- Lists every past edition of EuroITV, ACM TVX and ACM IMX, newest first, grouped by series. Each entry: name and year, city and country, format if not in person, and links to the conference website (or an archive.org snapshot if the site is gone) and proceedings (ACM DL; workshop proceedings on SBC SOL where applicable).
+- Rendered from `src/data/conferences.json`. Only editions that have taken place are listed; add each edition after it happens.
+
 ---
 
 ## 4. Removed content and redirects
 
-Removed: Conference Series page, Best Papers page, host-city gallery, "IMX 2026 in Ireland" notice, pandemic language, social plugin, WooCommerce/Storefront footer, duplicated menus.
+Removed: Best Papers page, host-city gallery, "IMX 2026 in Ireland" notice, pandemic language, social plugin, WooCommerce/Storefront footer, duplicated menus.
 
 Add to `public/.htaccess`:
 
@@ -164,7 +174,7 @@ RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Removed pages -> ACM Digital Library (confirm final DL URL)
-RewriteRule ^sc/conference-series/?$ https://dl.acm.org/conference/imx/proceedings [R=301,L]
+RewriteRule ^sc/conference-series/?$ /sc/history/ [R=301,L]
 RewriteRule ^sc/best-papers/?$       https://dl.acm.org/conference/imx/proceedings [R=301,L]
 
 # Old WordPress slugs are intentionally NOT redirected (they now return the 404 page).
@@ -305,7 +315,7 @@ The IMX brand pack is the authority for how the site looks. **Where the brand pa
 
 - [ ] Top bar with contact, SIGCHI link and "Go to the latest IMX" button appears on every page including the 404 page.
 - [ ] No page mentions a specific conference edition as upcoming or current.
-- [ ] No Conference Series or Best Papers page exists; both URLs redirect to the ACM DL.
+- [ ] No Best Papers page exists and its URL redirects to the ACM DL; the old Conference Series URL redirects to Past Conferences.
 - [ ] Special Issues is reachable from the footer and About IMX, but not from the main menu, and is labelled as an archive.
 - [ ] All links return 200/301 (run a link checker in CI or manually before launch).
 - [ ] No personal email addresses; only the role address.

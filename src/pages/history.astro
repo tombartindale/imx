@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import conferences from '../data/conferences.json';
+import site from '../data/site.json';
+
+interface Link { label: string; url: string }
+interface Conference {
+  year: number;
+  name: string;
+  city: string;
+  country: string;
+  format: 'in-person' | 'virtual' | 'hybrid';
+  website: string | null;
+  proceedings: Link[];
+}
+
+// Original sites that no longer exist link to an archive.org snapshot instead.
+const isArchived = (u: string) => u.startsWith('https://web.archive.org/');
+
+// Group editions by series, newest first; the series is the name's first word.
+const series = [
+  { key: 'IMX', title: 'ACM IMX', blurb: 'ACM International Conference on Interactive Media Experiences.' },
+  { key: 'TVX', title: 'ACM TVX', blurb: 'ACM International Conference on Interactive Experiences for TV and Online Video.' },
+  { key: 'EuroITV', title: 'EuroITV', blurb: 'European Conference on Interactive Television (later Interactive TV and Video).' },
+];
+const all = (conferences as Conference[]).slice().sort((a, b) => b.year - a.year);
+const groups = series
+  .map((s) => {
+    const items = all.filter((c) => c.name.split(' ')[0] === s.key);
+    const years = items.map((c) => c.year);
+    return { ...s, items, from: Math.min(...years), to: Math.max(...years) };
+  })
+  .filter((g) => g.items.length);
+---
+<BaseLayout
+  title="Past conferences"
+  description="Every past edition of ACM IMX and its predecessors ACM TVX and EuroITV: where each was held, with links to conference websites and proceedings."
+>
+  <div class="container page prose">
+    <h1>Past conferences</h1>
+    <p class="lead">
+      IMX grew out of EuroITV and ACM TVX. This page lists every past edition of the series, where it was
+      held, and links to its website and proceedings.
+    </p>
+    <p>
+      Main-conference proceedings are in the <a href={site.acmDlUrl}>ACM Digital Library</a>. Some workshop
+      proceedings are published elsewhere and are linked from the edition they belong to.
+    </p>
+
+    {groups.map((g) => (
+      <section aria-labelledby={`series-${g.key}`}>
+        <h2 id={`series-${g.key}`}>{g.title} <span class="years">{g.from}–{g.to}</span></h2>
+        <p class="note">{g.blurb}</p>
+        <ul class="editions">
+          {g.items.map((c) => (
+            <li class="edition">
+              <span class="edition__name">{c.name}</span>
+              <span class="edition__place">
+                {c.city}, {c.country}
+                {c.format !== 'in-person' && <span class="edition__format">({c.format})</span>}
+              </span>
+              {(c.website || c.proceedings.length > 0) && (
+                <ul class="edition__links">
+                  {c.website && (
+                    <li><a href={c.website}>{isArchived(c.website) ? 'Archived website' : 'Website'}<span class="visually-hidden">: {c.name}</span></a></li>
+                  )}
+                  {c.proceedings.map((p) => (
+                    <li><a href={p.url}>{p.label}<span class="visually-hidden">: {c.name}</span></a></li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .years {
+    font-weight: 400;
+    color: var(--color-text-muted);
+    font-size: 0.8em;
+  }
+  .editions {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-4);
+    border-top: 1px solid var(--color-border);
+  }
+  .editions > li + li { margin-top: 0; }
+  .edition {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: var(--space-1) var(--space-3);
+    padding-block: var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .edition__name {
+    font-weight: 700;
+    color: var(--color-heading);
+  }
+  .edition__format {
+    margin-left: 0.3em;
+    color: var(--color-text-muted);
+  }
+  .edition__links {
+    grid-column: 2;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-4);
+    font-size: 1rem;
+  }
+  .edition__links li + li { margin-top: 0; }
+  @media (max-width: 30em) {
+    .edition { grid-template-columns: 1fr; }
+    .edition__links { grid-column: 1; }
+  }
+</style>
