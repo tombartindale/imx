@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../lib/url';
+
+// PLACEHOLDER: replace with the SC's agreed Vision and Strategic Priorities text
+// (draft from the SC President), then add a short summary to the home page.
+---
+<BaseLayout
+  title="Vision and Priorities"
+  description="The ACM IMX Steering Committee's vision and strategic priorities for the conference and its community."
+>
+  <div class="container page prose">
+    <h1>Vision and Priorities</h1>
+    <p class="lead">
+      Beyond its administrative duties, the IMX Steering Committee works towards a long-term vision for the
+      conference and its community.
+    </p>
+    <p class="note">
+      <strong>Draft in preparation.</strong> The Steering Committee's vision and strategic priorities will be
+      published here.
+    </p>
+
+    <h2>Vision</h2>
+    <p class="note">To follow.</p>
+
+    <h2>Strategic priorities</h2>
+    <p class="note">To follow.</p>
+
+    <p>
+      Interested in helping to shape these priorities? Find out how to
+      <a href={url('join/')}>join the Steering Committee</a>.
+    </p>
+  </div>
+</BaseLayout>

@@ -1,12 +1,12 @@
 {
   "asOf": 2026,
   "members": [
-    { "name": "Santosh Basapur", "affiliation": "Institute of Design, IIT, USA", "role": "SC President" },
-    { "name": "Debora Christina Muchaluat Saade", "affiliation": "Universidade Federal Fluminense (UFF), Brazil", "role": "Vice President" },
-    { "name": "Asreen Rostami", "affiliation": "RISE, Sweden", "role": "Vice President for Conferences" },
-    { "name": "Tom Bartindale", "affiliation": "Northumbria University, UK", "role": "" },
-    { "name": "Pablo Cesar", "affiliation": "CWI, The Netherlands", "role": "" },
-    { "name": "Teresa Chambel", "affiliation": "University of Lisbon, Portugal", "role": "" },
-    { "name": "Jesús Gutiérrez", "affiliation": "GTI-UPM, Universidad Politécnica de Madrid, Spain", "role": "" }
+    {"name": "Santosh Basapur", "affiliation": "Institute of Design, IIT, USA", "role": "SC President", "scholar": "https://scholar.google.com/citations?user=qZUbmpEAAAAJ", "linkedin": "https://www.linkedin.com/in/santoshbasapur/"},
+    {"name": "Debora Christina Muchaluat Saade", "affiliation": "Universidade Federal Fluminense (UFF), Brazil", "role": "Vice President", "scholar": "https://scholar.google.com/citations?user=cWpEpdcAAAAJ", "linkedin": null},
+    {"name": "Asreen Rostami", "affiliation": "RISE, Sweden", "role": "Vice President for Conferences", "scholar": "https://scholar.google.com/citations?user=ag0u4NIAAAAJ", "linkedin": "https://www.linkedin.com/in/asreenrostami/"},
+    {"name": "Tom Bartindale", "affiliation": "Northumbria University, UK", "role": "", "scholar": "https://scholar.google.com/citations?user=yLecSWgAAAAJ", "linkedin": "https://www.linkedin.com/in/tom-bartindale-a98ba95a/"},
+    {"name": "Pablo Cesar", "affiliation": "CWI, The Netherlands", "role": "", "scholar": "https://scholar.google.com/citations?user=guRMl5IAAAAJ", "linkedin": "https://www.linkedin.com/in/pabloc2/"},
+    {"name": "Teresa Chambel", "affiliation": "University of Lisbon, Portugal", "role": "", "scholar": "https://scholar.google.com/citations?user=Gvmh4NQAAAAJ", "linkedin": "https://www.linkedin.com/in/teresa-chambel-20920835/"},
+    {"name": "Jesús Gutiérrez", "affiliation": "GTI-UPM, Universidad Politécnica de Madrid, Spain", "role": "", "scholar": "https://scholar.google.com/citations?user=t_WCdAsAAAAJ", "linkedin": "https://www.linkedin.com/in/jes%C3%BAs-guti%C3%A9rrez-s%C3%A1nchez-30aa3944/"}
   ]
 }

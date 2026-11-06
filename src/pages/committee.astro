@@ -2,6 +2,15 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import committee from '../data/committee.json';
 import { url } from '../lib/url';
+
+interface Member {
+  name: string;
+  affiliation: string;
+  role: string;
+  scholar?: string | null;
+  linkedin?: string | null;
+}
+const members = committee.members as Member[];
 ---
 <BaseLayout
   title="Steering Committee"
@@ -19,11 +28,17 @@ import { url } from '../lib/url';
     <h2>Members</h2>
     <p class="note">As of {committee.asOf}.</p>
     <ul class="people">
-      {committee.members.map((m) => (
+      {members.map((m) => (
         <li class="person">
           <span class="person__name">{m.name}</span>
           {m.role && <span class="person__role">{m.role}</span>}
           <span class="person__affiliation">{m.affiliation}</span>
+          {(m.scholar || m.linkedin) && (
+            <ul class="person__links">
+              {m.scholar && <li><a href={m.scholar}>Google Scholar<span class="visually-hidden">: {m.name}</span></a></li>}
+              {m.linkedin && <li><a href={m.linkedin}>LinkedIn<span class="visually-hidden">: {m.name}</span></a></li>}
+            </ul>
+          )}
         </li>
       ))}
     </ul>

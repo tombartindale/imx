@@ -36,6 +36,7 @@ There is no Home item: the header logo links to the home page `/sc/`.
 2. Past Conferences `/sc/history/`
 3. Host IMX `/sc/host/`
 4. Steering Committee (submenu label only; it is a button that opens the submenu, not a link)
+   - Vision and Priorities `/sc/vision/`
    - Current Members `/sc/committee/`
    - Join the SC `/sc/join/`
    - Student Assistant `/sc/student-assistant/`
@@ -158,6 +159,12 @@ Carry across the live page, lightly edited. Final copy:
 - In the main menu, and linked from About IMX (History section).
 - Lists every past edition of EuroITV, ACM TVX and ACM IMX, newest first, grouped by series. Each entry: name and year, city and country, format if not in person, and links to the conference website (or an archive.org snapshot if the site is gone) and proceedings (ACM DL; workshop proceedings on SBC SOL where applicable).
 - Rendered from `src/data/conferences.json`. Only editions that have taken place are listed; add each edition after it happens.
+
+### 3.10 Vision and Priorities (`/sc/vision/`)
+
+- First item in the Steering Committee submenu.
+- A concise statement of what the SC aims to accomplish beyond its administrative duties: a vision and a short list of strategic priorities. The SC President is drafting the text for the committee to review.
+- **Currently a placeholder** ("Draft in preparation"). When the text is agreed, replace the placeholder and add a one- or two-sentence summary with a link to the home page.
 
 ---
 
