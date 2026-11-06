@@ -236,14 +236,14 @@
     "city": "Como",
     "country": "Italy",
     "format": "in-person",
-    "website": "https://web.archive.org/web/20130510194711/http://euroitv2013.org",
+    "website": "https://tvx.acm.org/2013/",
     "proceedings": [
       {
         "label": "Proceedings",
         "url": "https://dl.acm.org/doi/proceedings/10.1145/2465958"
       }
     ],
-    "notes": "Original domain dead; archive.org used."
+    "notes": "Website hosted on tvx.acm.org (live); replaces archive.org snapshot."
   },
   {
     "year": 2012,
@@ -296,14 +296,14 @@
     "city": "Leuven",
     "country": "Belgium",
     "format": "in-person",
-    "website": "https://web.archive.org/web/20090215011035/http://euroitv2009.org:80/",
+    "website": "https://tvx.acm.org/2009/",
     "proceedings": [
       {
         "label": "Proceedings",
         "url": "https://dl.acm.org/doi/proceedings/10.1145/1542084"
       }
     ],
-    "notes": "Original domain now hosts unrelated content; archive.org used."
+    "notes": "Website hosted on tvx.acm.org (live); replaces archive.org snapshot."
   },
   {
     "year": 2008,
@@ -326,14 +326,14 @@
     "city": "Amsterdam",
     "country": "Netherlands",
     "format": "in-person",
-    "website": null,
+    "website": "https://tvx.acm.org/2007/EuroITV-2007.html",
     "proceedings": [
       {
         "label": "Proceedings",
         "url": "https://doi.org/10.1007/978-3-540-72559-6"
       }
     ],
-    "notes": "Springer LNCS 4471, 'Interactive TV: a Shared Experience'. No website or archive snapshot found."
+    "notes": "Website hosted on tvx.acm.org (supplied by the site owner); confirms Amsterdam, 24–25 May 2007."
   },
   {
     "year": 2006,
@@ -361,9 +361,9 @@
     "city": "Brighton",
     "country": "UK",
     "format": "in-person",
-    "website": null,
+    "website": "https://tvx.acm.org/2004/",
     "proceedings": [],
-    "notes": "2nd European Conference on Interactive Television; proceedings printed by University of Brighton (not online). No website found."
+    "notes": "Website hosted on tvx.acm.org; confirms Brighton, UK, 31 March–2 April 2004."
   },
   {
     "year": 2003,
@@ -371,8 +371,8 @@
     "city": "Brighton",
     "country": "UK",
     "format": "in-person",
-    "website": null,
+    "website": "https://web.archive.org/web/20030402054012/http://www.brighton.ac.uk:80/interactive/euroitv/",
     "proceedings": [],
-    "notes": "1st edition, 2–4 April 2003. No website, archive snapshot or online proceedings found."
+    "notes": "Website: archive.org snapshot of the University of Brighton conference page (title confirms EuroITV 2003, University of Brighton, 2–4 April 2003)."
   }
 ]
